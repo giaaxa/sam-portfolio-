@@ -1,0 +1,59 @@
+@import "tailwindcss";
+@import "@fontsource/unbounded/800.css";
+@import "@fontsource/unbounded/900.css";
+@import "@fontsource/lexend-exa/200.css";
+@import "@fontsource/lexend-exa/300.css";
+@import "@fontsource-variable/lexend";
+
+@theme {
+  --color-ink: #53638e;          /* slate — type & interaction */
+  --color-ink-deep: #4b5781;     /* footer */
+  --color-peri: #a0afdf;         /* periwinkle wave */
+  --color-peri-light: #c8d1ef;   /* leading wave layer */
+  --color-lilac: #a98bd6;        /* accent from the illustrations */
+  --color-basket: #1e2130;
+
+  --font-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --font-wide: "Lexend Exa", "Lexend Variable", system-ui, sans-serif;
+  --font-sans: "Lexend Variable", system-ui, sans-serif;
+}
+
+:root { color-scheme: light; }
+
+html, body { background: #fff; color: var(--color-ink); }
+body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-stretch: expanded;
+}
+
+::selection { background: var(--color-peri); color: #fff; }
+
+:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 4px; border-radius: 4px; }
+
+/* Spin slider (range input) */
+.spin-slider { -webkit-appearance: none; appearance: none; background: transparent; width: 100%; height: 26px; cursor: pointer; }
+.spin-slider:disabled { cursor: default; }
+.spin-slider::-webkit-slider-runnable-track { height: 7px; border-radius: 99px; background: var(--color-ink); }
+.spin-slider::-moz-range-track { height: 7px; border-radius: 99px; background: var(--color-ink); }
+.spin-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; margin-top: -8.5px; border-radius: 50%; background: var(--color-ink); border: 0; transition: transform .25s; }
+.spin-slider::-moz-range-thumb { width: 24px; height: 24px; border-radius: 50%; background: var(--color-ink); border: 0; }
+.spin-slider:not(:disabled):hover::-webkit-slider-thumb { transform: scale(1.15); }
+
+/* Avatar still-image fallback: slow 3/4 sway, paused on hover */
+@keyframes avatar-sway {
+  0%   { transform: perspective(500px) rotateY(-26deg); }
+  50%  { transform: perspective(500px) rotateY(26deg); }
+  100% { transform: perspective(500px) rotateY(-26deg); }
+}
+.avatar-sway { animation: avatar-sway 9s ease-in-out infinite; transform-origin: 50% 50%; }
+.avatar-hover:hover .avatar-sway, .avatar-hover:focus-visible .avatar-sway { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar-sway { animation: none; }
+  *, *::before, *::after { transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
