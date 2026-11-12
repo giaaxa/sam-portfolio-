@@ -26,7 +26,7 @@ npm run build    # typecheck + production build
 ## Assets needed from Sam
 Everything in `public/assets/characters/` and `public/assets/brand/avatar-head.png` is a **temporary crop taken from the flattened mockups**. These crops are low-resolution and look soft at large sizes. To replace them, overwrite the files with the same names, or change the paths in `src/data`.
 
-1. **The 3D head model** as a `.glb` file. Put it at `public/assets/models/waynstead-head.glb` and set `avatarAsset.model` in `src/data/assets.ts`. The header then shows a real Three.js model that rotates and pauses on hover. Until then it shows the still image with a slow sway.
+1. ~~3D head model~~ **Done.** `PearlSculpt_WebVer2.glb` is at `public/assets/models/waynstead-head.glb`, compressed with meshopt from 6.5 MB to 1.1 MB. It plays Sam's own 360° spin, slowed to 0.35× (`SPIN_SPEED` in `AvatarModel.tsx`), held centred, and paused on hover. This export has black eyes and no sunglasses, unlike the still in the mockups. Swap the file if there's a newer version.
 2. **Turntable frames for the hero figure** (for example 24–36 PNGs taken around the figure, or a 3D model) for the spin slider. List them in `heroAsset.turntableFrames`. Until then the slider is shown but disabled, so a flat image is never spun.
 3. **Original high-res transparent PNGs** of the hero figure (`hero-lilac.png`) and the 8 gallery characters (`character-01…08.png`), plus any more characters for the gallery.
 4. **The basket icon.** The current net-bag icon is a stand-in drawn in code (`src/components/Icons.tsx`).

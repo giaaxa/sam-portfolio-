@@ -26,7 +26,7 @@ export const avatarAsset = {
    * /public/assets/models/waynstead-head.glb, then set this to that path.
    * When set, the header renders a real rotating Three.js model instead.
    */
-  model: null as string | null,
+  model: '/assets/models/waynstead-head.glb' as string | null,
 }
 
 export const heroAsset = {
